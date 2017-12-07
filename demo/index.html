@@ -90,6 +90,8 @@
     ksplayer.options.flash.swf = "ksplayer.swf";
 
     var $ = document.querySelectorAll.bind(document);
+    var loadStartTime = 0,
+        playingTime = 0;
 
     var player = ksplayer('example-video',{
         language: 'zh-CN',
@@ -163,6 +165,7 @@
 
     player.on("playing",function(event, data) {
         console.log(event);
+        playingTime = new Date().getTime();
     });
 
     player.on("seeked",function(event, data) {
@@ -175,6 +178,7 @@
 
     player.on("loadstart",function(event, data) {
         console.log(event);
+        loadStartTime = new Date().getTime();
     });
 
 
